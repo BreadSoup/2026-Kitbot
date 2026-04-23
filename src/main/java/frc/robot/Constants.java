@@ -19,5 +19,12 @@ public final class Constants {
 
   public static class IntakeConstants {
     public static final int kIntakeMotorPort = 1; // Replace with actual CAN ID
+    public static final double IntakeSpeed = 0;
+    public static final double ShooterSpeed = 0;
+  }
+
+  public static class feederConstants {
+    public static final int kFeederMotorPort = 2; // Replace with actual CAN ID
+    public static final double FeederSpeed = 0;
   }
 }

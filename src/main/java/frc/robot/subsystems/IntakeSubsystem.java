@@ -6,21 +6,31 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.revrobotics.spark.SparkBase.PersistMode;
-import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkMaxConfig;
-import com.revrobotics.spark.SparkMax;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  private SparkMax intakeMotor;
+  private final TalonFX intakeMotor;
 
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {
-    intakeMotor = new SparkMax(1); // Replace 1 with the actual CAN ID
+    intakeMotor = new TalonFX(Constants.IntakeConstants.kIntakeMotorPort); // Replace with the actual CAN ID
   }
+
+  public void runIntake() {
+    intakeMotor.set(Constants.IntakeConstants.IntakeSpeed);
+  }
+
+  public void runShooter() {
+    intakeMotor.set(Constants.IntakeConstants.ShooterSpeed);
+  }
+
+  public void stop() {
+    intakeMotor.stopMotor();
+  }
+
+
 
   @Override
   public void periodic() {
